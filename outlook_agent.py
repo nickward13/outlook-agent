@@ -7,12 +7,6 @@ from pathlib import Path
 import requests
 import msal
 
-# Configuration for Microsoft Graph API
-CLIENT_ID = os.environ["OUTLOOK_AGENT_CLIENT_ID"]
-CLIENT_SECRET = os.environ["OUTLOOK_AGENT_CLIENT_SECRET"]
-TENANT_ID = 'common'
-AUTHORITY = f'https://login.microsoftonline.com/{TENANT_ID}'
-SCOPE = ['https://graph.microsoft.com/.default']
 
 def get_access_token():
     # app = msal.ConfidentialClientApplication(
