@@ -8,7 +8,7 @@ CUSTOM_PATH = "/gradio"
 app = FastAPI()
 
 def get_token(request: Request):
-    token = auth.get_access_token()
+    token = auth.get_access_token(["User.Read", "Tasks.ReadWrite"])
     return token
 
 def outlook_agent_chat(message, history):

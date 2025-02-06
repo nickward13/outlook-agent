@@ -20,16 +20,16 @@ def get_access_token():
     
     
 
-def get_access_token(scope):
+def get_access_token(scopes: list[str]):
 
     result = None
     accounts = app.get_accounts()
     if accounts:
         chosen_account = accounts[0]
-        result = app.acquire_token_silent(scopes=scope, account=chosen_account)
+        result = app.acquire_token_silent(scopes=scopes, account=chosen_account)
     
     if not result:
-        result = app.acquire_token_interactive(scopes=scope)
+        result = app.acquire_token_interactive(scopes=scopes)
     
     if 'access_token' in result:
         return result['access_token']
