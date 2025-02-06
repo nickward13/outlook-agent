@@ -16,14 +16,20 @@ app = PublicClientApplication(
 
 def get_access_token():
     
+    return get_access_token(SCOPE)
+    
+    
+
+def get_access_token(scope):
+
     result = None
     accounts = app.get_accounts()
     if accounts:
         chosen_account = accounts[0]
-        result = app.acquire_token_silent(scopes=SCOPE, account=chosen_account)
+        result = app.acquire_token_silent(scopes=scope, account=chosen_account)
     
     if not result:
-        result = app.acquire_token_interactive(scopes=SCOPE)
+        result = app.acquire_token_interactive(scopes=scope)
     
     if 'access_token' in result:
         return result['access_token']
