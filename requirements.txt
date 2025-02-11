@@ -2,3 +2,4 @@ gradio
 azure.ai.projects
 azure.identity
 fastapi
+msgraph-sdk

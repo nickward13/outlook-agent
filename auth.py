@@ -1,6 +1,8 @@
 import os
 import requests
 from msal import PublicClientApplication
+from azure.identity import InteractiveBrowserCredential
+from msgraph import GraphServiceClient
 
 # Configuration for Microsoft Graph API
 CLIENT_ID = os.environ["OUTLOOK_AGENT_CLIENT_ID"]
@@ -35,3 +37,11 @@ def get_access_token(scopes: list[str]):
         return result['access_token']
     else:
         raise Exception("Could not obtain access token")
+    
+def get_graph_client(scopes: list[str]):
+    credentials = InteractiveBrowserCredential(
+        client_id=CLIENT_ID, 
+        tenant_id=TENANT_ID,
+        )
+    client = GraphServiceClient(credentials=credentials, scopes=scopes)
+    return client
