@@ -24,7 +24,8 @@ io = gr.ChatInterface(
     type="messages",
 )
 
-app = gr.mount_gradio_app(app, io, path=CUSTOM_PATH, auth_dependency=get_token)
+#app = gr.mount_gradio_app(app, io, path=CUSTOM_PATH, auth_dependency=get_token)
+app = gr.mount_gradio_app(app, io, path=CUSTOM_PATH)
 
 if __name__ == "__main__":
     import uvicorn

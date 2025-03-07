@@ -48,9 +48,12 @@ class ToDo:
 async def main():
     todo = ToDo()
     lists = await todo.get_task_lists()
-    #tasks = await todo.get_all_tasks(lists[0].id)
+    tasks = []
+    for l in lists:
+        tasks += await todo.get_all_tasks(l.id)
+    print(f"Tasks in all lists: {len(tasks)}")
     #print(f"Tasks in list {lists[0].display_name}: {len(tasks)}")
-    current_tasks = await todo.get_current_tasks(lists[0].id)
-    print(f"Current tasks in list {lists[0].display_name}: {len(current_tasks)}")
+    #current_tasks = await todo.get_current_tasks(lists[0].id)
+    #print(f"Current tasks in list {lists[0].display_name}: {len(current_tasks)}")
     
 asyncio.run(main())
